@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1008265800387",
+    "project_id": "finalyearproject-144ea",
+    "storage_bucket": "finalyearproject-144ea.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1008265800387:android:dff517c4aae82124621076",
+        "android_client_info": {
+          "package_name": "com.example.use_of_sentiment_analysis_in_citizen_participation"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1008265800387-on9ahfa79siksc0holvcej1ivq5292sa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBFzezbeWIUH2Ns2L0ruMtlAqHTlvgtkwk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1008265800387-on9ahfa79siksc0holvcej1ivq5292sa.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
