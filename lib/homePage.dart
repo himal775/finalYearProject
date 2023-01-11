@@ -1,11 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
 import 'package:use_of_sentiment_analysis_in_citizen_participation/addOpinion.dart';
 import 'package:use_of_sentiment_analysis_in_citizen_participation/postOpinion.dart';
-import 'package:use_of_sentiment_analysis_in_citizen_participation/provider/crud.dart';
 import 'package:use_of_sentiment_analysis_in_citizen_participation/viewOpinion.dart';
 
 class HomePage extends StatelessWidget {
@@ -199,8 +197,6 @@ class HomePage extends StatelessWidget {
                     });
               } else if (snapshot.hasError) {
                 throw "${snapshot.error}";
-                print("Error");
-                return const Text("Something Went Wrong");
               } else {
                 return const Center(
                   child: CircularProgressIndicator(),

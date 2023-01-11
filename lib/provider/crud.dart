@@ -64,4 +64,44 @@ class Crud {
 
     }
   }
+
+  Future<List<dynamic>> viewUserResponse() async {
+    // Get a reference to the document
+    final uid = FirebaseAuth.instance.currentUser!.uid;
+    DocumentReference documentReference =
+        FirebaseFirestore.instance.collection('Opinion').doc(uid);
+
+    // Get the document snapshot
+    DocumentSnapshot snapshot = await documentReference.get();
+
+    // Check if the document exists
+    if (snapshot.exists) {
+      // Get the list field from the document
+      return snapshot['userComments'];
+    } else {
+      throw "err";
+      // The document does not exist
+
+    }
+  }
+
+  Future<String> myQuestion() async {
+    // Get a reference to the document
+    final uid = FirebaseAuth.instance.currentUser!.uid;
+    DocumentReference documentReference =
+        FirebaseFirestore.instance.collection('Opinion').doc(uid);
+
+    // Get the document snapshot
+    DocumentSnapshot snapshot = await documentReference.get();
+
+    // Check if the document exists
+    if (snapshot.exists) {
+      // Get the list field from the document
+      return snapshot['Question'];
+    } else {
+      throw "err";
+      // The document does not exist
+
+    }
+  }
 }

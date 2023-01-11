@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:get/get.dart';
+import 'package:use_of_sentiment_analysis_in_citizen_participation/bottomNavigation.dart';
 import 'package:use_of_sentiment_analysis_in_citizen_participation/homePage.dart';
 import 'package:use_of_sentiment_analysis_in_citizen_participation/provider/authProvider.dart';
 import 'package:use_of_sentiment_analysis_in_citizen_participation/signUpPage.dart';
@@ -191,7 +192,7 @@ class _LoginPageState extends State<LoginPage> {
                         } else if (response == "Loading") {
                           Get.defaultDialog(middleText: "Loading..");
                         } else {
-                          Get.to(() => HomePage());
+                          Get.to(() => AdminBottomNavigation());
                         }
                       } else {
                         return null;
