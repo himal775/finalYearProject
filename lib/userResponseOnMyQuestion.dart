@@ -43,6 +43,7 @@ class UserResponse extends StatelessWidget {
     );
   }
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
@@ -54,6 +55,15 @@ class UserResponse extends StatelessWidget {
             builder: (context, snapshot) {
               if (snapshot.hasData) {
                 final text = snapshot.data!.length;
+                final data = snapshot.data;
+                int positiveCount =
+                    data!.where((map) => map['Status'] == 'Positive').length;
+                int NegativeCount =
+                    data.where((map) => map['Status'] == 'Negative').length;
+                int Neutral =
+                    data.where((map) => map['Status'] == 'Neutral').length;
+
+                print(snapshot.data);
                 return Column(
                   children: [
                     const SizedBox(
@@ -93,6 +103,33 @@ class UserResponse extends StatelessWidget {
                               Column(
                                 children: [
                                   Text("Total response: $text"),
+                                ],
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Column(
+                                children: [
+                                  Text("Postive response: $positiveCount"),
+                                ],
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Column(
+                                children: [
+                                  Text("Negative response: $NegativeCount"),
+                                ],
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Column(
+                                children: [
+                                  Text("Negative response: $Neutral"),
                                 ],
                               ),
                             ],

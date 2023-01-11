@@ -30,13 +30,22 @@ class Crud {
   }
 
   Future<String> addComment(
-      {String? Name, required String Comment, required String Uid}) async {
+      {String? Name,
+      required String Comment,
+      required String Uid,
+      required String status,
+      required int score}) async {
     try {
       DocumentReference documentReference =
           FirebaseFirestore.instance.collection('Opinion').doc(Uid);
       await documentReference.update({
         "userComments": FieldValue.arrayUnion([
-          {"Comment by": Name, "Comment": Comment}
+          {
+            "Comment by": Name,
+            "Comment": Comment,
+            "Score": score,
+            "Status": status
+          }
         ])
       });
 
