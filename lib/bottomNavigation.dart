@@ -22,7 +22,7 @@ class _AdminBottomNavigation extends State<AdminBottomNavigation> {
   Widget build(BuildContext context) {
     return Consumer(builder: (context, ref, child) {
       return Scaffold(
-        bottomNavigationBar: Container(
+        bottomNavigationBar: SizedBox(
           height: 60,
           child: BottomNavigationBar(
               type: BottomNavigationBarType.fixed,

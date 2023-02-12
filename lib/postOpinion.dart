@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
+import 'package:use_of_sentiment_analysis_in_citizen_participation/bottomNavigation.dart';
 import 'package:use_of_sentiment_analysis_in_citizen_participation/homePage.dart';
 import 'package:use_of_sentiment_analysis_in_citizen_participation/provider/crud.dart';
 
@@ -44,7 +45,7 @@ class _postOpinionState extends State<postOpinion> {
                               .read(crudprovider)
                               .uploadData(question: opinionController.text);
                           if (response == "Success") {
-                            Get.to(() => const HomePage());
+                            Get.to(() => AdminBottomNavigation());
                           } else {
                             return;
                           }

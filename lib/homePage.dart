@@ -26,175 +26,229 @@ class HomePage extends StatelessWidget {
                 FirebaseFirestore.instance.collection('Opinion').snapshots(),
             builder: (context, snapshot) {
               if (snapshot.hasData) {
-                return ListView.builder(
-                    itemCount: snapshot.data!.docs.length,
-                    itemBuilder: (context, index) {
-                      final document = snapshot.data!.docs;
-                      return Column(
-                        children: [
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              const Icon(Icons.person_outline),
-                              InkWell(
-                                onTap: () {
-                                  Get.to(() => const postOpinion());
-                                },
-                                child: Container(
-                                  height: 50,
-                                  width: 300,
-                                  decoration: const BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(30)),
-                                      boxShadow: [
-                                        BoxShadow(
-                                            blurRadius: 1,
-                                            spreadRadius: 1,
-                                            color: Colors.grey)
-                                      ]),
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      const SizedBox(
-                                        width: 10,
-                                      ),
-                                      Text(
-                                        "Post for Opinion",
-                                        style: TextStyle(
-                                            color: Colors.grey.shade700),
-                                      ),
-                                    ],
-                                  ),
+                return Column(
+                  children: [
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        const Icon(Icons.person_outline),
+                        InkWell(
+                          onTap: () {
+                            Get.to(() => const postOpinion());
+                          },
+                          child: Container(
+                            height: 50,
+                            width: 300,
+                            decoration: const BoxDecoration(
+                                color: Colors.white,
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(30)),
+                                boxShadow: [
+                                  BoxShadow(
+                                      blurRadius: 1,
+                                      spreadRadius: 1,
+                                      color: Colors.grey)
+                                ]),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                const SizedBox(
+                                  width: 10,
                                 ),
-                              ),
-                              IconButton(
-                                  onPressed: () {},
-                                  icon: const Icon(Icons.photo))
-                            ],
+                                Text(
+                                  "Post for Opinion",
+                                  style: TextStyle(color: Colors.grey.shade700),
+                                ),
+                              ],
+                            ),
                           ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Divider(
-                            color: Colors.grey.shade400,
-                            thickness: 15,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 8.0, bottom: 8),
-                            child: Container(
-                              height: 220,
-                              width: double.infinity,
-                              decoration: const BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20)),
-                                  boxShadow: [
-                                    BoxShadow(
-                                        blurRadius: 1,
-                                        spreadRadius: 1,
-                                        color: Colors.grey)
-                                  ]),
-                              child: Column(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                children: [
-                                  Column(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      Row(
-                                        children: [
-                                          const SizedBox(
-                                            width: 10,
+                        ),
+                        IconButton(
+                            onPressed: () {}, icon: const Icon(Icons.photo))
+                      ],
+                    ),
+                    Expanded(
+                      child: ListView.builder(
+                          itemCount: snapshot.data!.docs.length,
+                          itemBuilder: (context, index) {
+                            final document = snapshot.data!.docs;
+                            return Column(
+                              children: [
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                // Row(
+                                //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                //   children: [
+                                //     const Icon(Icons.person_outline),
+                                //     InkWell(
+                                //       onTap: () {
+                                //         Get.to(() => const postOpinion());
+                                //       },
+                                //       child: Container(
+                                //         height: 50,
+                                //         width: 300,
+                                //         decoration: const BoxDecoration(
+                                //             color: Colors.white,
+                                //             borderRadius:
+                                //                 BorderRadius.all(Radius.circular(30)),
+                                //             boxShadow: [
+                                //               BoxShadow(
+                                //                   blurRadius: 1,
+                                //                   spreadRadius: 1,
+                                //                   color: Colors.grey)
+                                //             ]),
+                                //         child: Row(
+                                //           mainAxisAlignment: MainAxisAlignment.start,
+                                //           children: [
+                                //             const SizedBox(
+                                //               width: 10,
+                                //             ),
+                                //             Text(
+                                //               "Post for Opinion",
+                                //               style: TextStyle(
+                                //                   color: Colors.grey.shade700),
+                                //             ),
+                                //           ],
+                                //         ),
+                                //       ),
+                                //     ),
+                                //     IconButton(
+                                //         onPressed: () {},
+                                //         icon: const Icon(Icons.photo))
+                                //   ],
+                                // ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                Divider(
+                                  color: Colors.grey.shade400,
+                                  thickness: 15,
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      top: 8.0, bottom: 8),
+                                  child: Container(
+                                    height: 220,
+                                    width: double.infinity,
+                                    decoration: const BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(20)),
+                                        boxShadow: [
+                                          BoxShadow(
+                                              blurRadius: 1,
+                                              spreadRadius: 1,
+                                              color: Colors.grey)
+                                        ]),
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceAround,
+                                      children: [
+                                        Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          children: [
+                                            Row(
+                                              children: [
+                                                const SizedBox(
+                                                  width: 10,
+                                                ),
+                                                const Icon(Icons.person),
+                                                const SizedBox(
+                                                  width: 10,
+                                                ),
+                                                Text(document[index]["Name"])
+                                              ],
+                                            ),
+                                            const SizedBox(
+                                              height: 10,
+                                            ),
+                                            Text(
+                                              document[index]["Question"],
+                                              style: const TextStyle(
+                                                  fontSize: 21,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                          ],
+                                        ),
+                                        const SizedBox(
+                                          height: 10,
+                                        ),
+                                        const Padding(
+                                          padding: EdgeInsets.all(8.0),
+                                          child: Divider(
+                                            color: Colors.grey,
                                           ),
-                                          const Icon(Icons.person),
-                                          const SizedBox(
-                                            width: 10,
-                                          ),
-                                          Text(document[index]["Name"])
-                                        ],
-                                      ),
-                                      const SizedBox(
-                                        height: 10,
-                                      ),
-                                      Text(
-                                        document[index]["Question"],
-                                        style: const TextStyle(
-                                            fontSize: 21,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                    ],
-                                  ),
-                                  const SizedBox(
-                                    height: 10,
-                                  ),
-                                  const Padding(
-                                    padding: EdgeInsets.all(8.0),
-                                    child: Divider(
-                                      color: Colors.grey,
+                                        ),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceEvenly,
+                                          children: [
+                                            TextButton(
+                                              child: Column(
+                                                children: [
+                                                  Icon(
+                                                    Icons.add,
+                                                    color: Colors.grey.shade700,
+                                                  ),
+                                                  Text(
+                                                    "Add Opinion",
+                                                    style: TextStyle(
+                                                        color: Colors
+                                                            .grey.shade700),
+                                                  ),
+                                                ],
+                                              ),
+                                              onPressed: () {
+                                                Get.to(() => addOpinion(
+                                                      Question: document[index]
+                                                          ["Question"],
+                                                      uid: document[index]
+                                                          ["UserId"],
+                                                    ));
+                                              },
+                                            ),
+                                            TextButton(
+                                              child: Column(
+                                                children: [
+                                                  Icon(
+                                                    Icons.comment,
+                                                    color: Colors.grey.shade700,
+                                                  ),
+                                                  Text(
+                                                    "View Opinion",
+                                                    style: TextStyle(
+                                                        color: Colors
+                                                            .grey.shade700),
+                                                  ),
+                                                ],
+                                              ),
+                                              onPressed: () {
+                                                Get.to(() => viewOpinion(
+                                                      documentId:
+                                                          document[index]
+                                                              ["UserId"],
+                                                      Question: document[index]
+                                                          ["Question"],
+                                                    ));
+                                              },
+                                            ),
+                                          ],
+                                        )
+                                      ],
                                     ),
                                   ),
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceEvenly,
-                                    children: [
-                                      TextButton(
-                                        child: Column(
-                                          children: [
-                                            Icon(
-                                              Icons.add,
-                                              color: Colors.grey.shade700,
-                                            ),
-                                            Text(
-                                              "Add Opinion",
-                                              style: TextStyle(
-                                                  color: Colors.grey.shade700),
-                                            ),
-                                          ],
-                                        ),
-                                        onPressed: () {
-                                          Get.to(() => addOpinion(
-                                                Question: document[index]
-                                                    ["Question"],
-                                                uid: document[index]["UserId"],
-                                              ));
-                                        },
-                                      ),
-                                      TextButton(
-                                        child: Column(
-                                          children: [
-                                            Icon(
-                                              Icons.comment,
-                                              color: Colors.grey.shade700,
-                                            ),
-                                            Text(
-                                              "View Opinion",
-                                              style: TextStyle(
-                                                  color: Colors.grey.shade700),
-                                            ),
-                                          ],
-                                        ),
-                                        onPressed: () {
-                                          Get.to(() => viewOpinion(
-                                                documentId: document[index]
-                                                    ["UserId"],
-                                                Question: document[index]
-                                                    ["Question"],
-                                              ));
-                                        },
-                                      ),
-                                    ],
-                                  )
-                                ],
-                              ),
-                            ),
-                          )
-                        ],
-                      );
-                    });
+                                )
+                              ],
+                            );
+                          }),
+                    ),
+                  ],
+                );
               } else if (snapshot.hasError) {
                 throw "${snapshot.error}";
               } else {

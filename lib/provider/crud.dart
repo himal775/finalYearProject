@@ -6,6 +6,7 @@ import 'package:use_of_sentiment_analysis_in_citizen_participation/model/userMod
 final crudprovider = Provider(((ref) => Crud()));
 
 class Crud {
+  //function to add question data in firebasefirestore
   Future<String> uploadData({
     required String question,
   }) async {
@@ -30,6 +31,8 @@ class Crud {
   }
 
   Future<String> addComment(
+
+      //uploading comment data in firebase firestore
       {String? Name,
       required String Comment,
       required String Uid,

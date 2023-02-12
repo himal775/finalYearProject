@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:get/get.dart';
+import 'package:pie_chart/pie_chart.dart';
+import 'package:use_of_sentiment_analysis_in_citizen_participation/piechart.dart';
 import 'package:use_of_sentiment_analysis_in_citizen_participation/provider/crud.dart';
 
 class UserResponse extends StatelessWidget {
@@ -46,7 +49,9 @@ class UserResponse extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Text("Opinion Analysis"),
+      ),
       body: Consumer(
         builder: (context, ref, child) {
           final data = ref.watch(crudprovider).viewUserResponse();
@@ -70,7 +75,7 @@ class UserResponse extends StatelessWidget {
                       height: 10,
                     ),
                     Container(
-                      height: 220,
+                      height: 400,
                       width: double.infinity,
                       decoration: const BoxDecoration(
                           color: Colors.white,
@@ -86,6 +91,11 @@ class UserResponse extends StatelessWidget {
                           const SizedBox(
                             height: 10,
                           ),
+                          const Text(
+                              "The analysis of overal opinion is below:"),
+                          const SizedBox(
+                            height: 10,
+                          ),
                           question(context),
                           const SizedBox(
                             height: 20,
@@ -98,45 +108,39 @@ class UserResponse extends StatelessWidget {
                           const SizedBox(
                             height: 10,
                           ),
-                          Row(
-                            children: [
-                              Column(
-                                children: [
-                                  Text("Total response: $text"),
-                                ],
-                              ),
-                            ],
+                          ListTile(
+                            leading: Icon(Icons.people),
+                            title: Text("Total response: $text"),
                           ),
-                          Row(
-                            children: [
-                              Column(
-                                children: [
-                                  Text("Postive response: $positiveCount"),
-                                ],
-                              ),
-                            ],
+                          ListTile(
+                            leading: const Text(
+                              "😀",
+                              style: TextStyle(fontSize: 22),
+                            ),
+                            title: Text("Positive response: $positiveCount"),
                           ),
-                          Row(
-                            children: [
-                              Column(
-                                children: [
-                                  Text("Negative response: $NegativeCount"),
-                                ],
-                              ),
-                            ],
+                          ListTile(
+                            leading: const Text("😞",
+                                style: TextStyle(fontSize: 22)),
+                            title: Text("Negative response: $NegativeCount"),
                           ),
-                          Row(
-                            children: [
-                              Column(
-                                children: [
-                                  Text("Negative response: $Neutral"),
-                                ],
-                              ),
-                            ],
+                          ListTile(
+                            leading: const Text("😶",
+                                style: TextStyle(fontSize: 22)),
+                            title: Text("Neutral response: $Neutral"),
                           ),
                         ],
                       ),
-                    )
+                    ),
+                    TextButton(
+                        onPressed: () {
+                          Get.to(() => pieChart(
+                                postive: positiveCount,
+                                negative: NegativeCount,
+                                neutral: Neutral,
+                              ));
+                        },
+                        child: const Text("View in chart"))
                   ],
                 );
               } else if (snapshot.data == null) {

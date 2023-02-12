@@ -43,6 +43,8 @@ dependencies:
   dio: ^4.0.6
   firebase_core: ^2.4.1
   dart_sentiment: ^0.0.9
+  pie_chart: ^5.3.2
+  firebase_messaging: ^14.2.2
 
 dev_dependencies:
   flutter_test:
